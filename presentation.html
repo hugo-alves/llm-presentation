@@ -1,0 +1,390 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>From Prompts to Agents - Synthetic Users</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/night.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+    
+    <style>
+      :root {
+        --r-heading-text-transform: none;
+        --r-background-color: #1c1e33;
+        --r-main-color: #fff;
+        --r-heading-color: #fff;
+        --r-link-color: #42affa;
+        --r-link-color-dark: #1a6091;
+        --r-accent-color: #42affa;
+        --r-selection-background-color: #42affa;
+      }
+      .reveal {
+        font-size: 32px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      .reveal h1 {
+        font-size: 2.5em;
+        margin-bottom: 0.5em;
+        font-weight: 600;
+      }
+      .reveal h2 {
+        font-size: 1.6em;
+        margin-bottom: 0.8em;
+        font-weight: 600;
+      }
+      .reveal h3 {
+        font-size: 1.2em;
+        color: #e7e7e7;
+      }
+      .reveal ul {
+        margin-top: 0.4em;
+      }
+      .reveal li {
+        margin-bottom: 0.4em;
+      }
+      .reveal li li {
+        font-size: 0.9em;
+      }
+      .reveal strong {
+        color: #42affa;
+      }
+      .reveal em {
+        color: #e7ad52;
+      }
+      .reveal blockquote {
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 4px solid #42affa;
+        padding: 0.5em 1em;
+      }
+      .reveal a {
+        color: #42affa;
+      }
+      .reveal .progress {
+        height: 8px;
+        background: rgba(66, 175, 250, 0.2);
+      }
+      .reveal .progress span {
+        background: #42affa;
+      }
+      .title-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .title-logo {
+        max-width: 300px;
+        margin-bottom: 30px;
+      }
+      .contact-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .su-brand {
+        color: #42affa;
+        font-weight: bold;
+      }
+      .slide-background {
+        background: linear-gradient(to bottom, #1c1e33 0%, #141525 100%);
+      }
+      .arrow {
+        color: #42affa;
+      }
+      .quote {
+        font-size: 1.2em;
+        font-style: italic;
+        color: #e7ad52;
+        margin: 1em 0;
+        text-align: center;
+      }
+      .spectrum-container {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 0;
+        gap: 10px;
+      }
+      .spectrum {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(66, 175, 250, 0.1);
+        border-radius: 30px;
+        height: 40px;
+        padding: 0 15px;
+        position: relative;
+      }
+      .spectrum::before {
+        content: '';
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        height: 2px;
+        background: linear-gradient(to right, rgba(66, 175, 250, 0.3), rgba(66, 175, 250, 0.9));
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .spectrum-label {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .spectrum-label span:last-child {
+        margin-left: auto;
+      }
+      .metric-label {
+        color: #42affa;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-transition="zoom" class="title-slide">
+          <img src="logo_SU-removebg-preview.png" alt="Synthetic Users Logo" class="title-logo">
+          <h1>From Prompts to Agents</h1>
+          <h3>Building with AI at Different Levels of Autonomy</h3>
+          <p class="quote">"We're shifting from AI as a tool to AI as a collaborator."</p>
+        </section>
+        <section data-transition="slide">
+          <p><em>From Prompts to Agents: How AI is Learning to Run the Show</em></p>
+          <ul>
+            <li><span class="su-brand">Synthetic Users</span> in action — showing:
+              <ul>
+                <li>Prompt-based testing of UX</li>
+                <li>Flow-driven user simulations</li>
+                <li>Agent-based behavior modeling</li>
+              </ul>
+            </li>
+            <li>Agenda: From prompts <span class="arrow">→</span> flows <span class="arrow">→</span> agents <span class="arrow">→</span> future of autonomous organizations</li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>The Evolution of AI Interactions</h2>
+          <div class="spectrum-container">
+            <div class="spectrum">
+              <span>Prompt</span>
+              <span class="arrow">→</span>
+              <span>Flow</span>
+              <span class="arrow">→</span>
+              <span>Agent</span>
+            </div>
+            <div class="spectrum-label">
+              <span class="metric-label">Autonomy</span>
+              <span>↑</span>
+            </div>
+            <div class="spectrum-label">
+              <span class="metric-label">Flexibility</span>
+              <span>↑</span>
+            </div>
+            <div class="spectrum-label">
+              <span class="metric-label">Engineering Effort</span>
+              <span>↑</span>
+            </div>
+          </div>
+          <p>"We've gone from crafting smart outputs to designing AI behavior."</p>
+        </section>
+        <section data-transition="slide">
+          <h2>Prompt Engineering</h2>
+          <ul>
+            <li>One-shot, stateless, human-in-the-loop</li>
+            <li>Strengths:
+              <ul>
+                <li>Fast prototyping</li>
+                <li>Minimal code</li>
+                <li>Useful for content, transformation, Q&A</li>
+              </ul>
+            </li>
+            <li>Limitations:
+              <ul>
+                <li>No reasoning, memory, or decision-making</li>
+                <li>Breaks down with complexity or interactivity</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>Flow Engineering</h2>
+          <ul>
+            <li>Multi-step, logic-driven workflows</li>
+            <li>Structure = predictability and modularity</li>
+            <li>Use Cases:
+              <ul>
+                <li>Structured decision trees</li>
+                <li>Templated document generation</li>
+                <li>LLM + rule-based automations</li>
+              </ul>
+            </li>
+            <li>Limitations:
+              <ul>
+                <li>Rigid and labor-intensive to maintain</li>
+                <li>Difficult to adapt to novel cases</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>Agentic AI – What Changes</h2>
+          <ul>
+            <li>Agents operate in loops: <strong>plan <span class="arrow">→</span> act <span class="arrow">→</span> observe <span class="arrow">→</span> reflect</strong></li>
+            <li>Key shift: from "generate text" to "decide what to do next"</li>
+            <li>Benefits:
+              <ul>
+                <li>Handle ambiguity</li>
+                <li>Invoke tools and external systems</li>
+                <li>React to new info in real time</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>Axes of Relevance for AI Agents</h2>
+          <blockquote><p>"Not all agents are created equal. Here's how to think about their design space."</p></blockquote>
+          <ol>
+            <li><strong>Autonomy</strong> – from rule-following to self-directed</li>
+            <li><strong>Memory</strong> – stateless vs task-level vs persistent agents</li>
+            <li><strong>Tool Use</strong> – can the agent take action or just generate?</li>
+            <li><strong>Planning</strong> – does it create plans or follow fixed ones?</li>
+            <li><strong>Human Involvement</strong> – in-the-loop vs on-the-loop vs autonomous</li>
+            <li><strong>Specialization</strong> – one skill or generalist?</li>
+            <li><strong>Coordination</strong> – solo or part of a multi-agent system?</li>
+          </ol>
+        </section>
+        <section data-transition="slide">
+          <h2>What Can Agents Actually Do?</h2>
+          <ul>
+            <li>Core actions:
+              <ul>
+                <li>Query APIs</li>
+                <li>Execute code</li>
+                <li>Search the web</li>
+                <li>Access databases</li>
+                <li>Read/write files</li>
+                <li>Communicate with other agents</li>
+              </ul>
+            </li>
+            <li>Tools = agency</li>
+            <li>Agent = planner + orchestrator</li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>Agent Roles in a Modern Company</h2>
+          <ul>
+            <li><strong>Support Agent:</strong> Troubleshoots based on customer input, escalates edge cases</li>
+            <li><strong>Ops Agent:</strong> Syncs tools (CRM <span class="arrow">→</span> Slack <span class="arrow">→</span> dashboards), triggers alerts</li>
+            <li><strong>Research Agent:</strong> Collects data, summarizes insights, drafts reports</li>
+            <li><strong>CRM Agent:</strong> Follows up with leads, writes messages, updates records</li>
+            <li><strong>UX Agent:</strong> Tests product flows (as in <span class="su-brand">Synthetic Users</span>)</li>
+            <li>Think of them as teammates with APIs instead of hands</li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>Advantages of Agents</h2>
+          <ul>
+            <li><strong>Flexibility</strong> – adapt to new goals and environments</li>
+            <li><strong>Scalability</strong> – multiply productivity with minimal marginal cost</li>
+            <li><strong>Emergent Behavior</strong> – agents can surprise you with creative steps</li>
+            <li><strong>Reusability</strong> – same agent logic, many use cases</li>
+            <li><strong>System Thinking</strong> – unlock cross-functional workflows</li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>The Future — Agents Running Companies?</h2>
+          <ul>
+            <li>Can agents coordinate across departments?</li>
+            <li>Thought experiment: A company of agents
+              <ul>
+                <li>Sales <span class="arrow">→</span> CRM <span class="arrow">→</span> Billing <span class="arrow">→</span> Reporting</li>
+                <li>All agents, minimal humans</li>
+              </ul>
+            </li>
+            <li>Real examples emerging: startups using LLM agents for internal operations</li>
+            <li>Analogy: What AWS did for infra, agents could do for ops</li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>Challenges & Limits</h2>
+          <ul>
+            <li><strong>Trust & Safety:</strong> Hallucinations, bias, unpredictability</li>
+            <li><strong>Observability:</strong> Hard to debug "why" an agent made a choice</li>
+            <li><strong>Governance:</strong> Who's responsible when things go wrong?</li>
+            <li><strong>Collaboration:</strong> How do humans + agents work as a team?</li>
+            <li><strong>Evaluation:</strong> How do we measure success?
+              <ul>
+                <li>Metrics: Task success rate, autonomy %, recovery from failure, resource usage</li>
+                <li>Evaluation = continuous monitoring + structured feedback</li>
+              </ul>
+            </li>
+            <li>Key: Keep humans in the loop for oversight and accountability</li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>Strategic Guidance</h2>
+          <ul>
+            <li>Crawl <span class="arrow">→</span> Walk <span class="arrow">→</span> Run strategy:
+              <ul>
+                <li>Start with prompts</li>
+                <li>Build flows</li>
+                <li>Scale to agents when tasks require autonomy</li>
+              </ul>
+            </li>
+            <li>Pair agents with humans at first (copilot model)</li>
+            <li>Monitor, tune, and slowly expand their decision space</li>
+          </ul>
+        </section>
+        <section data-transition="slide">
+          <h2>Final Thoughts</h2>
+          <ul>
+            <li>Agents = productized intelligence</li>
+            <li>Not magic — they're structured loops with memory + tools</li>
+            <li>Design them like you'd build a team:
+              <ul>
+                <li>Give them roles, permissions, and reviews</li>
+                <li>Let them specialize, then collaborate</li>
+              </ul>
+            </li>
+            <li>Start small. Iterate. Let them grow into it.</li>
+          </ul>
+        </section>
+        <section data-transition="zoom" class="title-slide">
+          <h2>Q&A / Contact</h2>
+          <ul>
+            <li>Q&A</li>
+            <li class="contact-info">Contact: <a href="mailto:hugo@syntheticusers.com">hugo@syntheticusers.com</a> | <a href="https://www.linkedin.com/in/hugomanuelalves/" target="_blank">LinkedIn</a></li>
+            <li>Ask about <span class="su-brand">Synthetic Users</span> and how we use agents internally</li>
+          </ul>
+          <img src="logo_SU-removebg-preview.png" alt="Synthetic Users Logo" class="title-logo" style="margin-top: 40px;">
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/config/
+      // - https://revealjs.com/auto-slide/
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        progress: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        controls: true,
+        center: true,
+        // width: 1200, 
+        // height: 700,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+      });
+    </script>
+  </body>
+</html> 
